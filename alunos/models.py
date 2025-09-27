@@ -47,7 +47,7 @@ class AlunoAtivo(models.Model):
 class Pagamento(models.Model):
     aluno = models.ForeignKey(AlunoAtivo, on_delete=models.CASCADE)
     data_pagamento = models.DateTimeField(auto_now_add=True)
-    valor = models.DecimalField(max_digits=6, decimal_places=2)
+    valor = models.DecimalField(max_digits=6, decimal_places=2, default=50.00)
     descricao = models.CharField(max_length=255, default='Renovação Anual')
 
     def __str__(self):
