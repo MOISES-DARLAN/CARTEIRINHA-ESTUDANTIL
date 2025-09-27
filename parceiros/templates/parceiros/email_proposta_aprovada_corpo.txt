@@ -1,0 +1,10 @@
+Olá, {{ nome_parceiro }}!
+
+Temos uma ótima notícia: sua proposta de parceria para a Carteirinha Estudantil foi avaliada e aprovada pela nossa equipe.
+
+Seu estabelecimento já está visível em nossa página de benefícios e os estudantes já podem aproveitar os descontos oferecidos.
+
+Agradecemos por se juntar à nossa rede!
+
+Atenciosamente,
+Equipe da Carteirinha Estudantil

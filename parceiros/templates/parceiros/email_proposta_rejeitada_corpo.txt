@@ -1,0 +1,10 @@
+Olá, {{ nome_parceiro }}.
+
+Agradecemos pelo seu interesse em se tornar um parceiro da Carteirinha Estudantil.
+
+Após análise da nossa equipe, sua proposta não pôde ser aprovada neste momento.
+
+Agradecemos a sua compreensão.
+
+Atenciosamente,
+Equipe da Carteirinha Estudantil
