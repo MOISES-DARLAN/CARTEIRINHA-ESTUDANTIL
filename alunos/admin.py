@@ -2,15 +2,20 @@ from django.contrib import admin, messages
 from .models import CadastroPendente, AlunoAtivo, Pagamento
 from django.contrib.auth.models import User
 from datetime import date, timedelta
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.utils.crypto import get_random_string
 
 @admin.action(description='Aprovar cadastros selecionados')
 def aprovar_cadastros(modeladmin, request, queryset):
     for cadastro in queryset:
-        if not User.objects.filter(email=cadastro.user.email).exists():
-            # Esta lógica pode ser removida se a criação do user já é garantida
-            user = cadastro.user
-        else:
-            user = User.objects.get(email=cadastro.user.email)
+        user = cadastro.user
+        
+        # Forma correta de gerar uma senha aleatória
+        password = get_random_string(length=12)
+        user.set_password(password)
+        user.save()
 
         aluno_ativo = AlunoAtivo.objects.create(
             user=user,
@@ -21,6 +26,21 @@ def aprovar_cadastros(modeladmin, request, queryset):
             data_vencimento_assinatura=date.today() + timedelta(days=365),
             tipo_carteirinha='Digital'
         )
+        
+        contexto_email = {
+            'nome_aluno': aluno_ativo.nome_completo,
+            'email_aluno': aluno_ativo.email,
+            'senha_temporaria': password,
+        }
+        
+        assunto = render_to_string('alunos/email_aprovado_assunto.txt', contexto_email)
+        corpo = render_to_string('alunos/email_aprovado_corpo.txt', contexto_email)
+        
+        try:
+            send_mail(assunto.strip(), corpo, settings.DEFAULT_FROM_EMAIL, [aluno_ativo.email], fail_silently=False)
+        except Exception as e:
+            modeladmin.message_user(request, f"Erro ao enviar e-mail para {aluno_ativo.email}: {e}", messages.ERROR)
+
         cadastro.delete()
 
 @admin.action(description='Registrar pagamento de renovação')

@@ -1,0 +1,14 @@
+Olá, {{ nome_aluno }}!
+
+Parabéns, seu cadastro no sistema de Carteirinha Estudantil foi aprovado pela nossa equipe.
+
+Você já pode acessar sua conta e visualizar sua carteirinha digital.
+
+Use as seguintes credenciais para fazer o login:
+Usuário: {{ email_aluno }}
+Senha: {{ senha_temporaria }}
+
+Recomendamos que você altere sua senha após o primeiro login.
+
+Atenciosamente,
+Equipe da Carteirinha Estudantil
