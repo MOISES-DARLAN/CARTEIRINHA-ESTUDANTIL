@@ -61,3 +61,7 @@ def minha_assinatura(request):
         'historico': historico_pagamentos,
     }
     return render(request, 'alunos/minha_assinatura.html', contexto)
+
+@login_required
+def renovar_assinatura(request):
+    return render(request, 'alunos/renovar_assinatura.html')

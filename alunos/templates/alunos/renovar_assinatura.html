@@ -1,0 +1,29 @@
+{% extends 'alunos/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h3>Renovar Assinatura</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Instruções para Pagamento</h4>
+                <p>Para renovar sua assinatura por mais um ano, por favor, siga os passos abaixo:</p>
+                <ol>
+                    <li>Realize uma transferência PIX no valor de <strong>R$ 50,00</strong> para a seguinte chave:</li>
+                    <li class="my-2">
+                        <div class="alert alert-primary">
+                            <strong>Chave PIX (CNPJ):</strong> 12.345.678/0001-90
+                        </div>
+                    </li>
+                    <li>Após a transferência, sua assinatura será reativada em nosso sistema em até <strong>24 horas úteis</strong>.</li>
+                    <li>Você poderá acompanhar a mudança de status nesta mesma plataforma.</li>
+                </ol>
+                <hr>
+                <a href="{% url 'minha_assinatura' %}" class="btn btn-secondary">Voltar para Minha Assinatura</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

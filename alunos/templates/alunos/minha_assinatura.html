@@ -14,8 +14,14 @@
                     {% elif aluno.status_pagamento == 'Vencido' %}alert-danger
                     {% endif %}" role="alert">
                     <h4 class="alert-heading">Status: {{ aluno.status_pagamento }}</h4>
-                    <p>Sua assinatura é válida até: <strong>{{ aluno.data_vencimento_assinatura|date:"d/m/Y" }}</strong></p>
+                    <p class="mb-0">Sua assinatura é válida até: <strong>{{ aluno.data_vencimento_assinatura|date:"d/m/Y" }}</strong></p>
                 </div>
+
+                {% if aluno.status_pagamento == 'Vencido' or aluno.status_pagamento == 'Pendente' %}
+                <div class="d-grid my-4">
+                    <a href="{% url 'renovar_assinatura' %}" class="btn btn-primary btn-lg">Renovar Assinatura Agora</a>
+                </div>
+                {% endif %}
                 
                 <hr>
 
