@@ -1,0 +1,17 @@
+{% extends 'alunos/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="card p-5">
+            <h1 class="display-4 text-success">Ticket Enviado!</h1>
+            <p class="lead">Sua solicitação foi registrada com sucesso. Nossa equipe responderá o mais breve possível no e-mail informado.</p>
+            <hr>
+            <div class="mt-4">
+                <a href="{% url 'registrar_ticket' %}" class="btn btn-secondary">Abrir Outro Ticket</a>
+                <a href="{% url 'lista_beneficios' %}" class="btn btn-primary">Voltar aos Benefícios</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

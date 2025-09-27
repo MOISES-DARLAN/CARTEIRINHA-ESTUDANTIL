@@ -1,0 +1,27 @@
+{% extends 'alunos/base.html' %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-5">Parceiros e Benefícios</h1>
+    <p class="lead">Confira os descontos e vantagens exclusivos para você.</p>
+</div>
+
+<div class="row">
+    {% for parceiro in parceiros %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ parceiro.nome_fantasia }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ parceiro.categoria }}</h6>
+                <p class="card-text flex-grow-1"><strong>Benefício:</strong> {{ parceiro.descricao_beneficio }}</p>
+                <p class="card-text"><small class="text-muted">{{ parceiro.endereco }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col">
+        <div class="alert alert-info">Nenhum parceiro cadastrado no momento.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
