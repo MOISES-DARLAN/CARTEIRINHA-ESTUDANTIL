@@ -10,9 +10,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    'suporte',
-    'parceiros',
-    'alunos',
+    'alunos.apps.AlunosConfig',
+    'parceiros.apps.ParceirosConfig',
+    'suporte.apps.SuporteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
