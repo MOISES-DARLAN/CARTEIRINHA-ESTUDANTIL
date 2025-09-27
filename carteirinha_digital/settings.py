@@ -10,6 +10,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'core.apps.CoreConfig',
     'alunos.apps.AlunosConfig',
     'parceiros.apps.ParceirosConfig',
     'suporte.apps.SuporteConfig',

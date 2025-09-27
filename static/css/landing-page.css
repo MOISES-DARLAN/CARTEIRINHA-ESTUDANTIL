@@ -1,0 +1,49 @@
+:root {
+    --ifro-green: #00843D;
+    --dark-surface: #1e1e1e;
+}
+
+/* Hero Section */
+.hero-section {
+    color: white;
+    padding: 10rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-section .display-4 {
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section .lead {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Feature Section */
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    color: white;
+    background-color: var(--ifro-green);
+    border-radius: 0.75rem;
+}
+
+/* How it Works Section */
+.how-it-works {
+    background-color: var(--dark-surface);
+    border-radius: 15px;
+}
+
+/* Partner CTA Section */
+.partner-cta {
+    background: linear-gradient(45deg, var(--ifro-green), #00a84e);
+    color: white;
+    border-radius: 15px;
+}

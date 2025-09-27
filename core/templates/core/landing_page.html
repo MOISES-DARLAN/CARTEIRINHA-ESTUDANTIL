@@ -1,0 +1,76 @@
+{% extends 'alunos/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/landing-page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4">A Carteirinha Digital do IFRO Guajará-Mirim</h1>
+        <p class="lead col-lg-8 mx-auto">Conectando estudantes e comércios locais. Tenha acesso a benefícios exclusivos e sua identificação sempre à mão.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+            <a href="{% url 'criar_conta' %}" class="btn btn-primary btn-lg px-4 gap-3">Sou Aluno, Quero me Cadastrar</a>
+            <a href="{% url 'registrar_proposta' %}" class="btn btn-outline-light btn-lg px-4">Sou Comerciante, Quero ser Parceiro</a>
+        </div>
+    </div>
+</div>
+
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom text-center mb-5">Vantagens para Você</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col text-center">
+            <div class="feature-icon mb-3">
+                <i class="bi bi-phone"></i>
+            </div>
+            <h3 class="fs-2">Sempre com Você</h3>
+            <p>Sua carteirinha estudantil diretamente no seu celular. Chega de esquecer ou perder o documento físico.</p>
+        </div>
+        <div class="col text-center">
+            <div class="feature-icon mb-3">
+                <i class="bi bi-tags"></i>
+            </div>
+            <h3 class="fs-2">Descontos Exclusivos</h3>
+            <p>Uma rede de parceiros em Guajará-Mirim com benefícios e descontos reais para facilitar sua vida acadêmica.</p>
+        </div>
+        <div class="col text-center">
+            <div class="feature-icon mb-3">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <h3 class="fs-2">Seguro e Oficial</h3>
+            <p>Uma plataforma segura e validada pelo IFRO, garantindo a autenticidade da sua identificação como estudante.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="how-it-works p-5 text-center">
+        <h2 class="mb-4">Simples, Rápido e Digital</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-success">1. Crie sua Conta</h3>
+                <p>Use seu e-mail e crie uma senha. O primeiro passo é rápido e seguro.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-success">2. Envie sua Inscrição</h3>
+                <p>Preencha seus dados de aluno e aguarde a validação pela secretaria do campus.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-success">3. Aproveite!</h3>
+                <p>Com o cadastro aprovado, sua carteirinha digital é ativada e você já pode usar os benefícios.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="partner-cta p-5 text-center">
+        <h2 class="display-5 fw-bold">Comerciante de Guajará-Mirim?</h2>
+        <div class="col-lg-8 mx-auto">
+            <p class="lead mb-4">Aproxime-se da comunidade estudantil do IFRO! Ofereça benefícios, ganhe visibilidade e impulsione seu negócio. Cadastre sua proposta de parceria gratuitamente.</p>
+            <a href="{% url 'registrar_proposta' %}" class="btn btn-dark btn-lg">Quero ser um Parceiro</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
