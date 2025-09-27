@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CadastroPendenteForm, CustomUserCreationForm
-from .models import AlunoAtivo
+from .models import AlunoAtivo, CadastroPendente
 
 def criar_conta(request):
+    if request.user.is_authenticated:
+        return redirect('minha_conta')
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -17,6 +19,8 @@ def criar_conta(request):
 
 @login_required
 def inscricao_aluno(request):
+    if AlunoAtivo.objects.filter(user=request.user).exists() or CadastroPendente.objects.filter(user=request.user).exists():
+        return redirect('minha_conta')
     if request.method == 'POST':
         form = CadastroPendenteForm(request.POST, request.FILES)
         if form.is_valid():
@@ -34,8 +38,16 @@ def inscricao_sucesso(request):
 @login_required
 def minha_conta(request):
     try:
-        aluno = AlunoAtivo.objects.get(user=request.user)
-        contexto = {'aluno': aluno}
+        aluno_ativo = AlunoAtivo.objects.get(user=request.user)
+        contexto = {'aluno': aluno_ativo, 'status': 'ativo'}
     except AlunoAtivo.DoesNotExist:
-        contexto = {'aluno': None}
+        try:
+            cadastro_pendente = CadastroPendente.objects.get(user=request.user)
+            contexto = {'cadastro': cadastro_pendente, 'status': 'pendente'}
+        except CadastroPendente.DoesNotExist:
+            contexto = {'status': 'nao_inscrito'}
     return render(request, 'alunos/minha_conta.html', contexto)
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

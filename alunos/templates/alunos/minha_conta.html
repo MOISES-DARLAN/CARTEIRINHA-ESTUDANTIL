@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="row justify-content-center">
+    {% if status == 'ativo' %}
     <div class="col-md-6 col-lg-5">
         <div class="card carteirinha-card shadow-lg">
             <div class="card-header text-center border-0 pt-3">
@@ -23,5 +24,24 @@
             </div>
         </div>
     </div>
+    {% elif status == 'pendente' %}
+    <div class="col-md-8 text-center">
+        <div class="card p-5">
+            <h1 class="display-5 text-primary">Aguardando Aprovação</h1>
+            <p class="lead">Seu cadastro foi recebido e está sendo analisado pela nossa equipe. Você receberá uma notificação por e-mail assim que for aprovado.</p>
+            <hr>
+            <p>Enquanto isso, que tal conferir os benefícios que esperam por você?</p>
+            <a href="{% url 'lista_beneficios' %}" class="btn btn-primary mt-2">Ver Benefícios</a>
+        </div>
+    </div>
+    {% elif status == 'nao_inscrito' %}
+    <div class="col-md-8 text-center">
+        <div class="card p-5">
+            <h1 class="display-5">Complete seu Cadastro</h1>
+            <p class="lead">Você já criou sua conta, agora falta preencher suas informações de estudante para solicitar sua carteirinha.</p>
+            <a href="{% url 'inscricao_aluno' %}" class="btn btn-primary btn-lg mt-3">Iniciar Inscrição</a>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
