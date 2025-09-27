@@ -1,75 +1,58 @@
 {% extends 'alunos/base.html' %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/landing-page.css' %}">
-{% endblock %}
-
 {% block content %}
-<div class="hero-section text-center">
-    <div class="container">
-        <h1 class="display-4">A Carteirinha Digital do IFRO Guajará-Mirim</h1>
-        <p class="lead col-lg-8 mx-auto">Conectando estudantes e comércios locais. Tenha acesso a benefícios exclusivos e sua identificação sempre à mão.</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
-            <a href="{% url 'criar_conta' %}" class="btn btn-primary btn-lg px-4 gap-3">Sou Aluno, Quero me Cadastrar</a>
-            <a href="{% url 'registrar_proposta' %}" class="btn btn-outline-light btn-lg px-4">Sou Comerciante, Quero ser Parceiro</a>
-        </div>
-    </div>
-</div>
-
-<div class="container px-4 py-5">
-    <h2 class="pb-2 border-bottom text-center mb-5">Vantagens para Você</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="col text-center">
-            <div class="feature-icon mb-3">
-                <i class="bi bi-phone"></i>
-            </div>
-            <h3 class="fs-2">Sempre com Você</h3>
-            <p>Sua carteirinha estudantil diretamente no seu celular. Chega de esquecer ou perder o documento físico.</p>
-        </div>
-        <div class="col text-center">
-            <div class="feature-icon mb-3">
-                <i class="bi bi-tags"></i>
-            </div>
-            <h3 class="fs-2">Descontos Exclusivos</h3>
-            <p>Uma rede de parceiros em Guajará-Mirim com benefícios e descontos reais para facilitar sua vida acadêmica.</p>
-        </div>
-        <div class="col text-center">
-            <div class="feature-icon mb-3">
-                <i class="bi bi-shield-check"></i>
-            </div>
-            <h3 class="fs-2">Seguro e Oficial</h3>
-            <p>Uma plataforma segura e validada pelo IFRO, garantindo a autenticidade da sua identificação como estudante.</p>
-        </div>
-    </div>
-</div>
-
-<div class="container py-5">
-    <div class="how-it-works p-5 text-center">
-        <h2 class="mb-4">Simples, Rápido e Digital</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <h3 class="text-success">1. Crie sua Conta</h3>
-                <p>Use seu e-mail e crie uma senha. O primeiro passo é rápido e seguro.</p>
-            </div>
-            <div class="col-md-4">
-                <h3 class="text-success">2. Envie sua Inscrição</h3>
-                <p>Preencha seus dados de aluno e aguarde a validação pela secretaria do campus.</p>
-            </div>
-            <div class="col-md-4">
-                <h3 class="text-success">3. Aproveite!</h3>
-                <p>Com o cadastro aprovado, sua carteirinha digital é ativada e você já pode usar os benefícios.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container py-5">
-    <div class="partner-cta p-5 text-center">
-        <h2 class="display-5 fw-bold">Comerciante de Guajará-Mirim?</h2>
+<div class="container">
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAYFBMVEVbn1n///9RmU9YnVZeoVxZnldnpmXx9/HB28D8/fxPmEz3+ve92Lxio2Dg7eDr8+uYw5eSv5GGuIXW59Wz07LI38hwrG9/tH2szqufx57h7eGMvItuqmyWwpV4sHbP484s4loCAAAEHUlEQVR4nO2cbY+qMBBG6XTKy0VERQRcF///v7xQ1OvqlJtsQkrNcz5ozOwmcyjQMh2NIgAAAAAAAAAAAAAAAAAAAAAAAACAX8AcGWPGt5Bh1kSmKOzbs4qsxXNRn0eCiU5dvS3L8/V4YHrKhUgL0BTUclB7sogiQ02dqzvnXUR3E9pfK4GWzehxSqVgeiI/GqyjY6ZUlg0vyr5U/WTC9KVkNuMfFKUcLGMvY8K6qAaBp0QylR+sCVM6+gkkhRkt5aD6Jh/XieHqh4Y1yayJFREPehJrpr0czFTnQ8SRbH7SHJSII51MVTqsETEsX7GZ2hMHJML07cpmGJKgRK6OVFXW64BETJzIGlM6wYgwNQ6PIZ1NUCKuqXtI5xqUyM55iagqKJG9e0TCEpm5RtKARCJ9yaVcbDptSCKRflsxPjiEJMLUukRKNgGJOM8tm01IIs4hKQsT0lprXP5uhXwy9UVhPY8MT7qn5C0he8sK63nEziUvJsOHlqbQKDL3zC4Ela9n9iHdS3Urn6jpPd/RLbITx0OpekhVu1bO+cVTZYvJdE/PiVn9rzCl261Eags+1FRSsDp4qmsNJoaKXV0ON+Isqdqe9FOlUfyHWzFRi0dee/OIrArxqWn6WD9r/Kf267gSvBV/eSIay7aG759+Bn/iK9N5NEmYuaC/MvUM1O8E9oVNVsd7KeqrTD0DUydPedvYjPV2ueqV7/3MFDOYIpFL0ar9MywaN45g6TvvN3TsWv2mf+ZXv74zf8EtsoGIFyACkYWACEQWAiIQWQiIQGQhIAKRhfh8kSywR92I3zcVphGxxYejI3g2vvN+hWkvD0lVjOWgeCsPiL86tRu6HASaaCrQcSNFLyv0iFiuit7Dcsl0beW5idk6dUBF7LEl/hX92BuQeq3vdyw2YtSTp9axAE/nlqH4JHDb/6FCCsZ+LiDqq0SgbO1h502SC2x7u/X2XUrBpPMzx5zFG6yaukxbR3BsptUnVxdL7+HsGmb2TJzzbjO7Izi/z77z0Yvy67XWyhoGIAIRiEAEIhCBCEQgAhGIQAQiEHmIOL7LfZztoGP7tSbHv375aBTUG/GQq7ynIdg4vrk0HfNKDm69VOhM1NXpO5vGltmob48CX1OFu+ikYFd42jsRy9T31l45eKslGjnoa+9ELFM/CtW/D65LZN5yXcyePY7g6nbexu9YdbVAOm2u6UMqRVvfWQvoVL6Hqmb8hYGDI3hcXUu5e0K8z+wiSbG2k+vzGwYg4gmIQGQhIAKRhYAIRBYCIhBZCIhAZCE+SUTuLbuJuBvPfGf+inZUoqdWwM4RvK7OI9KXuhTYTh2Wpj1L0Xp9AzK2yxYCj3ZZlqLr/PUKqYHZ3H8Ym8Wo33wBAAAAAAAAAAAAAAAAAAAAAAAA8Fn8BdoJeMstd2C3AAAAAElFTkSuQmCC" alt="Logo IFRO Guajará-Mirim" width="120">
+        <h1 class="display-5 fw-bold">Carteirinha Digital IFRO Guajará-Mirim</h1>
         <div class="col-lg-8 mx-auto">
-            <p class="lead mb-4">Aproxime-se da comunidade estudantil do IFRO! Ofereça benefícios, ganhe visibilidade e impulsione seu negócio. Cadastre sua proposta de parceria gratuitamente.</p>
-            <a href="{% url 'registrar_proposta' %}" class="btn btn-dark btn-lg">Quero ser um Parceiro</a>
+            <p class="lead mb-4">A plataforma oficial que moderniza sua identificação estudantil e conecta você a uma rede de benefícios exclusivos em nossa cidade.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'criar_conta' %}" class="btn btn-primary btn-lg px-4 gap-3">Sou Aluno, Criar Conta</a>
+                <a href="{% url 'registrar_proposta' %}" class="btn btn-secondary btn-lg px-4">Sou Comerciante, Seja Parceiro</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom text-center">Vantagens para Você</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col text-center">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-3">
+                    <i class="bi bi-phone"></i>
+                </div>
+                <h3 class="fs-4">Sempre com Você</h3>
+                <p>Sua carteirinha estudantil diretamente no seu celular. Chega de esquecer ou perder o documento físico.</p>
+            </div>
+            <div class="feature col text-center">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-3">
+                    <i class="bi bi-tags"></i>
+                </div>
+                <h3 class="fs-4">Descontos Exclusivos</h3>
+                <p>Uma rede de parceiros em Guajará-Mirim com benefícios e descontos reais para facilitar sua vida acadêmica.</p>
+            </div>
+            <div class="feature col text-center">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-3">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <h3 class="fs-4">Seguro e Oficial</h3>
+                <p>Uma plataforma segura e validada pelo IFRO, garantindo a autenticidade da sua identificação como estudante.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <h1 class="text-body-emphasis">Comerciante de Guajará-Mirim?</h1>
+            <p class="col-lg-8 mx-auto fs-5 text-muted">
+              Aproxime-se da comunidade estudantil do IFRO! Ofereça benefícios, ganhe visibilidade e impulsione seu negócio.
+            </p>
+            <div class="d-inline-flex gap-2 mb-5">
+              <a href="{% url 'registrar_proposta' %}" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" role="button">
+                Quero ser Parceiro
+              </a>
+            </div>
         </div>
     </div>
 </div>

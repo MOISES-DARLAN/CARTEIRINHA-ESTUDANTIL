@@ -1,30 +1,55 @@
 {% extends 'alunos/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/form-page.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8 col-lg-7">
-        <div class="card shadow-lg">
-            <div class="card-header card-header-custom text-center">
-                <h3>Formulário de Inscrição</h3>
+<div class="container">
+    <div class="progress-bar-container">
+        <div class="row">
+            <div class="col position-relative">
+                <div class="progress-step active">
+                    <div class="step-circle"><i class="bi bi-check-lg"></i></div>
+                    <div class="step-label">Criar Conta</div>
+                </div>
+                <div class="progress-line"></div>
             </div>
-            <div class="card-body p-4">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="mb-3">
-                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                            {{ field }}
-                            {% if field.errors %}
-                                <div class="alert alert-danger mt-1 p-2">
-                                    {{ field.errors|striptags }}
-                                </div>
-                            {% endif %}
+            <div class="col">
+                <div class="progress-step active">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Dados do Aluno</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="form-card">
+                <div class="card-header text-center py-3">
+                    <h4 class="mb-0">Etapa 2: Informações Acadêmicas</h4>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="alert alert-danger mt-1 p-2">
+                                        {{ field.errors|striptags }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Finalizar Inscrição</button>
                         </div>
-                    {% endfor %}
-                    <div class="d-grid mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg">Enviar Inscrição</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
