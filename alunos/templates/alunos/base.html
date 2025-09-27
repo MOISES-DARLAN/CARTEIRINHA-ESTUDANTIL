@@ -11,15 +11,12 @@
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Carteirinha Estudantil</a>
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">Carteirinha Estudantil</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'inscricao_aluno' %}">Inscrição</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'lista_beneficios' %}">Benefícios</a>
                     </li>
@@ -28,12 +25,18 @@
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'inscricao_aluno' %}">Inscrição</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'minha_conta' %}">Minha Conta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'criar_conta' %}">Criar Conta</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
