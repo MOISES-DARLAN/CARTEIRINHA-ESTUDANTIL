@@ -1,0 +1,23 @@
+{% extends 'alunos/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h3>Seja um Parceiro</h3>
+            </div>
+            <div class="card-body">
+                <p>Preencha o formulário abaixo para submeter sua proposta de parceria. Nossa equipe avaliará e entrará em contato.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar Proposta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
