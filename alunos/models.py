@@ -43,3 +43,12 @@ class AlunoAtivo(models.Model):
 
     def __str__(self):
         return f"{self.nome_completo} - {self.email}"
+
+class Pagamento(models.Model):
+    aluno = models.ForeignKey(AlunoAtivo, on_delete=models.CASCADE)
+    data_pagamento = models.DateTimeField(auto_now_add=True)
+    valor = models.DecimalField(max_digits=6, decimal_places=2)
+    descricao = models.CharField(max_length=255, default='Renovação Anual')
+
+    def __str__(self):
+        return f"Pagamento de {self.aluno.nome_completo} em {self.data_pagamento.strftime('%d/%m/%Y')}"

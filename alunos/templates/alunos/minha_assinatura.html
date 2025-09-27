@@ -1,0 +1,42 @@
+{% extends 'alunos/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h3>Minha Assinatura</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert 
+                    {% if aluno.status_pagamento == 'Pago' %}alert-success
+                    {% elif aluno.status_pagamento == 'Pendente' %}alert-warning
+                    {% elif aluno.status_pagamento == 'Vencido' %}alert-danger
+                    {% endif %}" role="alert">
+                    <h4 class="alert-heading">Status: {{ aluno.status_pagamento }}</h4>
+                    <p>Sua assinatura é válida até: <strong>{{ aluno.data_vencimento_assinatura|date:"d/m/Y" }}</strong></p>
+                </div>
+                
+                <hr>
+
+                <h4 class="mt-4">Histórico de Pagamentos</h4>
+                {% if historico %}
+                    <ul class="list-group">
+                        {% for pagamento in historico %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>{{ pagamento.descricao }}</strong>
+                                    <small class="d-block text-muted">Data: {{ pagamento.data_pagamento|date:"d/m/Y à\s H:i" }}</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">R$ {{ pagamento.valor }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Nenhum pagamento registrado.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

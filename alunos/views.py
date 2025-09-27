@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CadastroPendenteForm, CustomUserCreationForm
-from .models import AlunoAtivo, CadastroPendente
+from .models import AlunoAtivo, CadastroPendente, Pagamento
 
 def criar_conta(request):
     if request.user.is_authenticated:
@@ -51,3 +51,13 @@ def minha_conta(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def minha_assinatura(request):
+    aluno = AlunoAtivo.objects.get(user=request.user)
+    historico_pagamentos = Pagamento.objects.filter(aluno=aluno).order_by('-data_pagamento')
+    contexto = {
+        'aluno': aluno,
+        'historico': historico_pagamentos,
+    }
+    return render(request, 'alunos/minha_assinatura.html', contexto)

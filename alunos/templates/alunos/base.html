@@ -24,14 +24,16 @@
                         <a class="nav-link" href="{% url 'registrar_ticket' %}">Suporte</a>
                     </li>
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'inscricao_aluno' %}">Inscrição</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'minha_conta' %}">Minha Conta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Minha Conta
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'minha_conta' %}">Ver Carteirinha</a></li>
+                            <li><a class="dropdown-item" href="{% url 'minha_assinatura' %}">Minha Assinatura</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                          </ul>
                         </li>
                     {% else %}
                         <li class="nav-item">
