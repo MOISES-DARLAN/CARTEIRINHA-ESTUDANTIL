@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-m&@3+n06v!h^5@uh1fa$5=a&&8a9#06)c6@n$q!3@l@c^e(+5y
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['carteirinha-estudantil.onrender.com']
 
 INSTALLED_APPS = [
     'core.apps.CoreConfig',
@@ -98,6 +98,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.example.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'user@example.com'
+EMAIL_HOST_USER = 'moisesdarlan440@gmail.com'
 EMAIL_HOST_PASSWORD = 'password'
-DEFAULT_FROM_EMAIL = 'no-reply@carteirinhaestudantil.com'
+DEFAULT_FROM_EMAIL = 'moisesdarlan440@gmail.com'
